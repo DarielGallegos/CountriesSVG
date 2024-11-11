@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CountriesSVG.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <Picker 
+                x:Name="cboRegions"
+                Title="Seleccione una región: "
+                SelectedIndexChanged="cboRegions_SelectedIndexChanged">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Africa</x:String>
+                        <x:String>Americas</x:String>
+                        <x:String>Asia</x:String>
+                        <x:String>Europe</x:String>
+                        <x:String>Oceania</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <Entry 
+                x:Name="txtCountry"
+                Placeholder="Nombre del País"
+                SemanticProperties.Description="Ingrese el nombre del país que desea buscar"
+                Keyboard="Text"/>
+
+            <ListView
+                x:Name="countriesListView"
+                HasUnevenRows="True"
+                HeightRequest="710">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid HeightRequest="50">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="90" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0"
+                                Source="{Binding UrlSVG}"
+                                Aspect="AspectFill"
+                                HeightRequest="70"
+                                WidthRequest="70"
+                                   />
+                                <StackLayout Grid.Column="1" Margin="0,10,0,0">
+                                    <Label Text="{Binding NombrePais}" FontSize="Small"/>
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                
+            </ListView>
+            
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
