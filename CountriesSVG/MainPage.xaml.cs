@@ -1,4 +1,6 @@
 ﻿using System.Net.Http.Json;
+using Android.Content;
+using Android.Webkit;
 using CountriesSVG.Models;
 using SkiaSharp;
 
@@ -28,6 +30,12 @@ namespace CountriesSVG
                 lista = new List<Models.CountriesList>();
                 foreach (Models.CountriesPerRegion? item in list) {
                     if (item != null) {
+                        var key = item.Currencies.Keys.ToArray()[0];
+                        List<string>? lenguages = new List<string>();
+                        for (int i = 0; i < item?.Languages.Count; i++) {
+                            lenguages.Add(item.Languages.Values.ToArray()[i]);
+                        }
+
                         itemAdd = new Models.CountriesList()
                         {
                             NombrePais = item?.Translations?.Spa?.Official,
@@ -37,13 +45,17 @@ namespace CountriesSVG
                             Latitud = item?.Latlng?[0],
                             Longitud = item?.Latlng?[1],
                             Poblacion = item?.Population,
-                            Area = item?.Area
+                            Area = item?.Area,
+                            Moneda = new Models.Currencies() { 
+                                Name = item?.Currencies[key]?.Name,
+                                Symbol = item?.Currencies[key]?.Symbol
+                            },
+                            Lenguajes = lenguages
                         };
                     }
                     if (item != null) { 
                         lista.Add(itemAdd);
                     }
-                    Console.WriteLine($"Bandera: {item.Flags.Svg}, Nombre Oficial: {item.Translations.Spa.Official}");
                 }
             }
             lista_filter = lista;

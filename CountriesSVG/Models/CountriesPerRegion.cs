@@ -16,6 +16,9 @@ namespace CountriesSVG.Models
         public string? Flag { get; set; } = null;
         public int? Population { get; set; } = null;
         public double? Area { get; set; } = null;
+
+        public Dictionary<String, Currencies>? Currencies { get; set; } = null;
+        public Dictionary<String, String>? Languages { get; set; } = null;
         public FlagLinks? Flags { get; set; } = null;
 
     }
