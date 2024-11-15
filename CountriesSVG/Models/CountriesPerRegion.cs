@@ -15,7 +15,7 @@ namespace CountriesSVG.Models
         public float[]? Latlng { get; set; } = null;
         public string? Flag { get; set; } = null;
         public int? Population { get; set; } = null;
-        public string? Fifa { get; set; } = null;
+        public double? Area { get; set; } = null;
         public FlagLinks? Flags { get; set; } = null;
 
     }
