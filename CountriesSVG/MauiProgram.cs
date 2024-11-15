@@ -10,6 +10,7 @@ namespace CountriesSVG
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseMauiMaps()
                 .UseFFImageLoading()
                 .ConfigureFonts(fonts =>
                 {

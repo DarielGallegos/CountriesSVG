@@ -13,5 +13,17 @@ namespace CountriesSVG.Models
         public double? Area { get; set; } = null;
         public Currencies? Moneda { get; set; } = null;
         public List<String>? Lenguajes { get; set; } = null;
+
+        public string LenguajesString => Lenguajes != null && Lenguajes.Count > 0
+           ? string.Join(", ", Lenguajes)
+           : " ";
+
+        public string PoblacionString => Poblacion.HasValue
+            ? $"{Poblacion.Value:N0} habitantes" 
+            : " ";
+
+        public string AreaString => Area.HasValue
+            ? $"{Area.Value:N2} km²" 
+            : " ";
     }
 }

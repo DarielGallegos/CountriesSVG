@@ -68,9 +68,13 @@ namespace CountriesSVG
             await clientHttp(client, region);
         }
 
-        private void countriesListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private async void countriesListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            CountriesList item = e.SelectedItem as CountriesList;
+            if (e.SelectedItem is CountriesList selectedCountry)
+            {
+                await Navigation.PushAsync(new ViewDetails(selectedCountry));
+                countriesListView.SelectedItem = null;
+            }
         }
 
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
